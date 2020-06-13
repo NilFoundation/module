@@ -51,8 +51,7 @@ option(BUILD_DOXYGEN_DOCS "Build with configuring Doxygen documentation compiler
 
 set(DOXYGEN_OUTPUT_DIR "${CMAKE_CURRENT_LIST_DIR}/docs" CACHE STRING "Specify doxygen output directory")
 
-list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS
-     )
+list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS)
 
 list(APPEND ${CURRENT_PROJECT_NAME}_UNGROUPED_SOURCES)
 
@@ -86,5 +85,5 @@ if(BUILD_TESTS)
     add_subdirectory(test)
 endif()
 
-configure_file(${CMAKE_CURRENT_LIST_DIR}/docs/doxygen/engine.doxyfile.in
-               ${CMAKE_BINARY_DIR}/engine.doxyfile @ONLY)
+configure_file(${CMAKE_CURRENT_LIST_DIR}/docs/doxygen/module.doxyfile.in
+               ${CMAKE_BINARY_DIR}/module.doxyfile @ONLY)

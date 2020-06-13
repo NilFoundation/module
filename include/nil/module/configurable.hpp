@@ -15,11 +15,22 @@
 // <https://github.com/NilFoundation/plugin/blob/master/LICENSE_1_0.txt>.
 //----------------------------------------------------------------------------
 
-#ifndef MODULE_HPP
-#define MODULE_HPP
+#ifndef DBMS_CONFIGURABLE_HPP
+#define DBMS_CONFIGURABLE_HPP
+
+#include <boost/program_options.hpp>
 
 namespace nil {
-    class plugin { };
+    namespace module {
+        template<typename OptionsType, typename ConfigurationType>
+        struct BOOST_SYMBOL_VISIBLE configurable {
+            typedef OptionsType options_type;
+            typedef ConfigurationType configuration_type;
+
+            virtual void set_options(options_type &cli, options_type &cfg) const = 0;
+            virtual void initialize(configuration_type &options) = 0;
+        };
+    }    // namespace dbms
 }    // namespace nil
 
-#endif    // DBMS_PLUGIN_HPP
+#endif    // DBMS_CONFIGURABLE_HPP
