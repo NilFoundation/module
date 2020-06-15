@@ -18,19 +18,33 @@
 #ifndef DBMS_CONFIGURABLE_HPP
 #define DBMS_CONFIGURABLE_HPP
 
-#include <boost/program_options.hpp>
+#include <boost/config.hpp>
 
 namespace nil {
     namespace module {
-        template<typename OptionsType, typename ConfigurationType>
-        struct BOOST_SYMBOL_VISIBLE configurable {
-            typedef OptionsType options_type;
+        template<typename... OptionsTypes>
+        struct optionable;
+
+        template<typename ThisType, typename... RemainingTypes>
+        struct optionable<ThisType, RemainingTypes...> : optionable<RemainingTypes...> {
+
+            virtual void set_options(ThisType &cfg) const override = 0;
+        };
+
+        template<typename ThisType>
+        struct optionable<ThisType> {
+
+            virtual void set_options(ThisType &cfg) const override = 0;
+        };
+
+        template<typename ConfigurationType, typename... OptionsTypes>
+        struct BOOST_SYMBOL_VISIBLE configurable : public optionable<configurable<OptionsTypes...>, OptionsTypes...> {
+            typedef std::tuple<OptionsTypes...> options_types;
             typedef ConfigurationType configuration_type;
 
-            virtual void set_options(options_type &cli, options_type &cfg) const = 0;
             virtual void initialize(configuration_type &options) = 0;
         };
-    }    // namespace dbms
+    }    // namespace module
 }    // namespace nil
 
 #endif    // DBMS_CONFIGURABLE_HPP
