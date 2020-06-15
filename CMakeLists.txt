@@ -43,7 +43,7 @@ cm_find_package(CM)
 include(CMDeploy)
 include(CMSetupVersion)
 
-cm_project(module WORKSPACE_NAME ${CMAKE_WORKSPACE_NAME})
+cm_project(module)
 
 option(BUILD_DOXYGEN_DOCS "Build with configuring Doxygen documentation compiler" TRUE)
 
@@ -60,24 +60,24 @@ list(APPEND ${CURRENT_PROJECT_NAME}_HEADERS
 list(APPEND ${CURRENT_PROJECT_NAME}_SOURCES
      ${${CURRENT_PROJECT_NAME}_UNGROUPED_SOURCES})
 
-cm_setup_version(VERSION 0.1.0 PREFIX ${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME})
+cm_setup_version(VERSION 0.1.0 PREFIX ${CURRENT_PROJECT_NAME})
 
-add_library(${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME} INTERFACE)
+add_library(${CURRENT_PROJECT_NAME} INTERFACE)
 
-set_target_properties(${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME} PROPERTIES
+set_target_properties(${CURRENT_PROJECT_NAME} PROPERTIES
                       EXPORT_NAME ${CURRENT_PROJECT_NAME})
 
-target_link_libraries(${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME} INTERFACE
+target_link_libraries(${CURRENT_PROJECT_NAME} INTERFACE
 
                       ${Boost_LIBRARIES})
 
-target_include_directories(${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME} INTERFACE
+target_include_directories(${CURRENT_PROJECT_NAME} INTERFACE
                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                            "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>"
 
                            ${Boost_INCLUDE_DIRS})
 
-cm_deploy(TARGETS ${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME} INCLUDE include NAMESPACE ${CMAKE_WORKSPACE_NAME}::)
+cm_deploy(TARGETS ${CURRENT_PROJECT_NAME} INCLUDE include)
 
 if(BUILD_TESTS)
     add_subdirectory(test)
