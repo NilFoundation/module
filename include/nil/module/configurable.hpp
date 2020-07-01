@@ -28,13 +28,13 @@ namespace nil {
         template<typename ThisType, typename... RemainingTypes>
         struct optionable<ThisType, RemainingTypes...> : optionable<RemainingTypes...> {
 
-            virtual void set_options(ThisType &cfg) const override = 0;
+            virtual void set_options(ThisType &cfg) const = 0;
         };
 
         template<typename ThisType>
         struct optionable<ThisType> {
 
-            virtual void set_options(ThisType &cfg) const override = 0;
+            virtual void set_options(ThisType &cfg) const = 0;
         };
 
         template<typename ConfigurationType, typename... OptionsTypes>
