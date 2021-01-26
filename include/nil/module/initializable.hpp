@@ -35,7 +35,7 @@ namespace nil {
             virtual void startup() = 0;
             virtual void shutdown() = 0;
         };
-    }    // namespace dbms
+    }    // namespace module
 }    // namespace nil
 
 #endif    // DBMS_INITIALIZABLE_HPP

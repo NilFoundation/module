@@ -18,6 +18,8 @@
 #ifndef MODULE_IDENTIFIABLE_HPP
 #define MODULE_IDENTIFIABLE_HPP
 
+#include <cstdint>
+
 namespace nil {
     namespace module {
         template<typename IdentifierType = uint32_t>

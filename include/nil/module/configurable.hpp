@@ -15,8 +15,10 @@
 // <https://github.com/NilFoundation/plugin/blob/master/LICENSE_1_0.txt>.
 //----------------------------------------------------------------------------
 
-#ifndef DBMS_CONFIGURABLE_HPP
-#define DBMS_CONFIGURABLE_HPP
+#ifndef MODULE_CONFIGURABLE_HPP
+#define MODULE_CONFIGURABLE_HPP
+
+#include <tuple>
 
 #include <boost/config.hpp>
 
