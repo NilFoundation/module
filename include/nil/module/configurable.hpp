@@ -40,7 +40,7 @@ namespace nil {
         };
 
         template<typename ConfigurationType, typename... OptionsTypes>
-        struct BOOST_SYMBOL_VISIBLE configurable : public optionable<configurable<OptionsTypes...>, OptionsTypes...> {
+        struct BOOST_SYMBOL_VISIBLE configurable : public optionable<OptionsTypes...> {
             typedef std::tuple<OptionsTypes...> options_types;
             typedef ConfigurationType configuration_type;
 
