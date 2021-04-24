@@ -15,14 +15,10 @@
 // <https://github.com/NilFoundation/plugin/blob/master/LICENSE_1_0.txt>.
 //----------------------------------------------------------------------------
 
-#define BOOST_TEST_MODULE plugin_test
+#define BOOST_TEST_MODULE module_test
 
-#include <boost/test/data/monomorphic.hpp>
-#include <boost/test/data/test_case.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <nil/dbms/plugin/plugin.hpp>
-
-BOOST_AUTO_TEST_SUITE(plugin_test_suite)
+BOOST_AUTO_TEST_SUITE(module_test_suite)
 
 BOOST_AUTO_TEST_SUITE_END()
